@@ -1,11 +1,10 @@
 import express from 'express';
+import restaurantRoute from './routes/restaurant.route';
 
 const app = express();
 const port = 8000;
 
-app.get('/', (req, res) => {
-    res.send('Tudo funcionando')
-})
+app.use(restaurantRoute);
 
 app.listen(port, () => {
     console.log('App starting...')
