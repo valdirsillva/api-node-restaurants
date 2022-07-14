@@ -22,10 +22,12 @@ router.post('/user', async (req: Request, res: Response, next: NextFunction) => 
     return res.status(201).send();
 })
 
-// router.get('/users', async (req: Request, res: Response, next: NextFunction) => {
-//     const prismaUserRepository = new PrismaUserRepository();
+router.get('/users', async (req: Request, res: Response, next: NextFunction) => {
+    const prismaUserRepository = new PrismaUserRepository();
 
-//     const users = await prismaUserRepository.getAll();
-// })
+    const users = await prismaUserRepository.getAll();
+
+    console.log(users)
+})
 
 export default router;
