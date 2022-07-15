@@ -2,7 +2,7 @@ import express from 'express';
 import router from './routes/restaurant.route';
 
 const app = express();
-const port = 8000;
+const port = 8888;
 
 app.use(express.json());
 app.use(router);

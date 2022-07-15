@@ -17,3 +17,13 @@ model User {
   name      String?
   password  String
 }
+
+model Restaurant {
+  id             Int     @id @default(autoincrement())
+  name           String
+  description    String
+  price          String?
+  opening_hours  String
+  payment_method String
+
+}
