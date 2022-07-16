@@ -4,20 +4,18 @@ import { PrismaRestaurantRepository } from "../repositories/prisma/prisma-restau
 
 const router = Router();
 
-router.get('/restaurant', (req: Request, res: Response, next: NextFunction) => {
+router.get('/restaurants', async (req: Request, res: Response, next: NextFunction) => {
 
-    const restaurants = req.body;
-    console.log(restaurants)
+    const prismaRestaurantRepository = new PrismaRestaurantRepository();
+
+    const restaurants = await prismaRestaurantRepository.findAll();
+
+    res.status(200).send(restaurants);
 })
 
-router.post('/restaurant/add', async (req: Request, res: Response, next: NextFunction) => {
+router.post('/restaurant', async (req: Request, res: Response, next: NextFunction) => {
 
-    const {
-        name,
-        description,
-        price,
-        opening_hours,
-        payment_method } = req.body;
+    const { name, description, price, opening_hours, payment_method } = req.body;
 
     const prismaRestaurantRepository = new PrismaRestaurantRepository();
 
@@ -42,11 +40,12 @@ router.post('/user', async (req: Request, res: Response, next: NextFunction) => 
 })
 
 router.get('/users', async (req: Request, res: Response, next: NextFunction) => {
+
     const prismaUserRepository = new PrismaUserRepository();
 
     const users = await prismaUserRepository.getAll();
 
-    console.log(users)
+    res.status(200).send(users);
 })
 
 export default router;

@@ -13,4 +13,10 @@ export class PrismaRestaurantRepository implements RestaurantRepository {
             }
         })
     }
+
+    async findAll() {
+        const restaurants = await prisma.restaurant.findMany();
+
+        return restaurants;
+    }
 }
