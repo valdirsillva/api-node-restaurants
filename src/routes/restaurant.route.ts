@@ -1,4 +1,5 @@
 import { Router, Request, Response, NextFunction } from "express";
+import { StatusCodes } from "http-status-codes";
 import { PrismaUserRepository } from "../repositories/prisma/prisma-user-reposotory";
 import { PrismaRestaurantRepository } from "../repositories/prisma/prisma-restaurant-repository";
 
@@ -10,7 +11,7 @@ router.get('/restaurants', async (req: Request, res: Response, next: NextFunctio
 
     const restaurants = await prismaRestaurantRepository.findAll();
 
-    res.status(200).send(restaurants);
+    res.status(StatusCodes.OK).send(restaurants);
 })
 
 router.post('/restaurant', async (req: Request, res: Response, next: NextFunction) => {
@@ -23,7 +24,7 @@ router.post('/restaurant', async (req: Request, res: Response, next: NextFunctio
         name, description, price, opening_hours, payment_method
     });
 
-    return res.status(201).send();
+    return res.status(StatusCodes.CREATED).send();
 })
 
 router.post('/user', async (req: Request, res: Response, next: NextFunction) => {
@@ -36,7 +37,7 @@ router.post('/user', async (req: Request, res: Response, next: NextFunction) => 
         email, name, password
     });
 
-    return res.status(201).send();
+    return res.status(StatusCodes.CREATED).send();
 })
 
 router.get('/users', async (req: Request, res: Response, next: NextFunction) => {
@@ -45,7 +46,7 @@ router.get('/users', async (req: Request, res: Response, next: NextFunction) => 
 
     const users = await prismaUserRepository.getAll();
 
-    res.status(200).send(users);
+    res.status(StatusCodes.OK).send(users);
 })
 
 export default router;
