@@ -3,7 +3,8 @@ export interface RestaurantCreateData {
     description: string,
     price: string,
     opening_hours: string,
-    payment_method: string
+    payment_method: string,
+    image?: string | undefined,
 }
 
 export interface RestaurantRepository {

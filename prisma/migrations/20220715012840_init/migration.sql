@@ -6,4 +6,5 @@ CREATE TABLE "Restaurant" (
     "price" TEXT,
     "opening_hours" TEXT NOT NULL,
     "payment_method" TEXT NOT NULL
+    
 );

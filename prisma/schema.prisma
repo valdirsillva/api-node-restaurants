@@ -25,5 +25,6 @@ model Restaurant {
   price          String?
   opening_hours  String
   payment_method String
+  image          String?
 
 }
