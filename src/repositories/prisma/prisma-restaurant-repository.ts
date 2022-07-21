@@ -10,6 +10,7 @@ export class PrismaRestaurantRepository implements RestaurantRepository {
                 opening_hours: opening_hours,
                 price: price,
                 payment_method: payment_method,
+                image: image
 
             }
         })

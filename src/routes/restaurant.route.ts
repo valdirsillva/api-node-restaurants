@@ -17,11 +17,9 @@ router.get('/restaurants', async (req: Request, res: Response, next: NextFunctio
 })
 
 router.post('/restaurant', upload.single('image'), async (req: Request, res: Response, next: NextFunction) => {
+    const image = req.file?.filename
 
-
-    // console.log(image);
-
-    const { name, description, price, opening_hours, payment_method, image } = req.body;
+    const { name, description, price, opening_hours, payment_method } = req.body;
 
     const prismaRestaurantRepository = new PrismaRestaurantRepository();
 
