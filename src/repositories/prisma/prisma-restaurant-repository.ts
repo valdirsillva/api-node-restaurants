@@ -1,3 +1,4 @@
+import { Restaurant } from "@prisma/client";
 import { prisma } from "../../prisma";
 import { RestaurantRepository, RestaurantCreateData } from "../restaurant-repository";
 
@@ -16,9 +17,15 @@ export class PrismaRestaurantRepository implements RestaurantRepository {
         })
     }
 
-    async findAll() {
-        const restaurants = await prisma.restaurant.findMany();
+    async findAll(): Promise<Restaurant[]> {
+        return await prisma.restaurant.findMany();
+    }
 
-        return restaurants;
+    async delete(id: number): Promise<void> {
+        await prisma.restaurant.delete({
+            where: {
+                id: id
+            }
+        })
     }
 }
