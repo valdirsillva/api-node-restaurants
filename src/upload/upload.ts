@@ -1,6 +1,8 @@
 import { Request } from "express";
 import multer from 'multer';
 import path from 'path';
+import mime from "mime-types";
+
 
 const storage = multer.diskStorage({
     destination: function (request: Request, file, cb) {
@@ -8,7 +10,9 @@ const storage = multer.diskStorage({
     },
 
     filename: function (request: Request, file, cb) {
-        cb(null, file.originalname + Date.now() + path.extname(file.originalname));
+        const type = mime.extension(file.mimetype);
+
+        cb(null, `${new Date().getTime()}.${type}`);
     }
 })
 

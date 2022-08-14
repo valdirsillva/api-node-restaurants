@@ -8,7 +8,9 @@ const port = 8888;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
+
 app.use(router);
 app.use(routerUser);
 

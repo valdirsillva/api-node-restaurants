@@ -12,7 +12,6 @@ export class PrismaRestaurantRepository implements RestaurantRepository {
                 price: price,
                 payment_method: payment_method,
                 image: image
-
             }
         })
     }
