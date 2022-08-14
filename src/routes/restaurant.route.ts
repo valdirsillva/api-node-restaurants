@@ -18,6 +18,8 @@ router.get('/restaurants', async (req: Request, res: Response, next: NextFunctio
     }
 })
 
+
+
 router.post('/restaurant', upload.single('image'), async (req: Request, res: Response, next: NextFunction) => {
     try {
         const imagem = req.file?.filename;
@@ -30,6 +32,19 @@ router.post('/restaurant', upload.single('image'), async (req: Request, res: Res
 
         return res.status(StatusCodes.CREATED).send({ sucesso: 'Restaurante cadastrado.' });
 
+    } catch (error) {
+        next(error)
+    }
+})
+
+
+router.get('/restaurant/:id', async (req: Request, res: Response, next: NextFunction) => {
+    const uuid = parseInt(req.params.id)
+
+    try {
+        const restaurants = await prismaRestaurantRepository.findById(uuid);
+
+        return res.status(StatusCodes.OK).send(restaurants);
     } catch (error) {
         next(error)
     }

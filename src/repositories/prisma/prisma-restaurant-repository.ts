@@ -20,6 +20,16 @@ export class PrismaRestaurantRepository implements RestaurantRepository {
         return await prisma.restaurant.findMany();
     }
 
+    async findById(id: number): Promise<Restaurant | null> {
+        const restaurant = await prisma.restaurant.findUnique({
+            where: {
+                id: id
+            }
+        })
+
+        return restaurant;
+    }
+
     async delete(id: number): Promise<void> {
         await prisma.restaurant.delete({
             where: {
